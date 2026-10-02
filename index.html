@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fazenda Três Porquinhos — Leitões de raça</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Nota interna (lembrete pra mim mesmo, esquecer de tirar isso depois): ainda falta proteger de verdade a área /admin.html antes de lançar o site oficial. FLAG{COMENTARIO_HTML} -->
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#D98B8B"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#C97272"/><circle cx="27" cy="37" r="1.6" fill="#5C3A3A"/><circle cx="37" cy="37" r="1.6" fill="#5C3A3A"/><path d="M14 20 L22 28 L12 30 Z" fill="#D98B8B"/><path d="M50 20 L42 28 L52 30 Z" fill="#D98B8B"/></svg>
+      <span>Três Porquinhos</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Início</a>
+      <a href="#produtos">Leitões</a>
+      <span id="nav-user"></span>
+      <a id="nav-perfil-link" href="perfil.html" style="display:none;">Meu perfil</a>
+      <a id="nav-admin-link" class="admin-link" href="admin.html" style="display:none;">Painel administrativo</a>
+      <a id="nav-login-link" class="pill" href="login.html">Entrar</a>
+      <a id="nav-logout-link" href="#" onclick="logout();return false;" style="display:none;">Sair</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <h1>Leitões de raça, direto do criador</h1>
+      <p>Vendemos leitões saudáveis, com procedência e acompanhamento veterinário. Escolha a raça, reserve on-line e combine a retirada na granja.</p>
+      <a class="btn btn-outline" href="cadastro.html">Criar minha conta</a>
+    </div>
+    <div class="hero-figure">
+      <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#F3D9D9"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#E8B8B8"/><circle cx="27" cy="37" r="1.6" fill="#5C3A3A"/><circle cx="37" cy="37" r="1.6" fill="#5C3A3A"/><path d="M14 20 L22 28 L12 30 Z" fill="#F3D9D9"/><path d="M50 20 L42 28 L52 30 Z" fill="#F3D9D9"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="produtos">
+  <div class="container">
+    <div class="section-head">
+      <h2>Leitões disponíveis</h2>
+      <form class="search-box" onsubmit="buscarLeitao(event)">
+        <input id="busca" type="text" placeholder="Buscar por raça...">
+        <button class="btn" type="submit">Buscar</button>
+      </form>
+    </div>
+
+    <div id="resultado-busca" class="search-result"></div>
+
+    <div class="grid">
+      <article class="card" style="--breed:#8C3A2B">
+        <span class="tag">Duroc</span>
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#C97A5C"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#B06647"/><circle cx="27" cy="37" r="1.6" fill="#3A2318"/><circle cx="37" cy="37" r="1.6" fill="#3A2318"/></svg>
+        <h3>Leitão Duroc</h3>
+        <p>Crescimento rápido, ótima conversão alimentar. 45 dias, desmamado e vacinado.</p>
+        <div class="price">R$ 480,00</div>
+        <button class="btn" onclick="alert('Leitão Duroc adicionado ao pedido. Entraremos em contato por telefone.')">Comprar</button>
+      </article>
+
+      <article class="card" style="--breed:#5C6B3A">
+        <span class="tag">Landrace</span>
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#EFE6D6"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#DFD2B8"/><circle cx="27" cy="37" r="1.6" fill="#5C4B3A"/><circle cx="37" cy="37" r="1.6" fill="#5C4B3A"/></svg>
+        <h3>Leitão Landrace</h3>
+        <p>Orelhas caídas, ótima mãe e boa prolificidade. Indicado para reprodução.</p>
+        <div class="price">R$ 520,00</div>
+        <button class="btn" onclick="alert('Leitão Landrace adicionado ao pedido. Entraremos em contato por telefone.')">Comprar</button>
+      </article>
+
+      <article class="card" style="--breed:#C98A2B">
+        <span class="tag">Large White</span>
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#F7F2E7"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#E6DCC4"/><circle cx="27" cy="37" r="1.6" fill="#5C4B3A"/><circle cx="37" cy="37" r="1.6" fill="#5C4B3A"/></svg>
+        <h3>Leitão Large White</h3>
+        <p>Raça rústica e de fácil adaptação ao clima. Boa para pequenas propriedades.</p>
+        <div class="price">R$ 460,00</div>
+        <button class="btn" onclick="alert('Leitão Large White adicionado ao pedido. Entraremos em contato por telefone.')">Comprar</button>
+      </article>
+
+      <article class="card" style="--breed:#3A2A20">
+        <span class="tag">Pietrain</span>
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="34" r="22" fill="#E8E2D8"/><ellipse cx="18" cy="26" rx="6" ry="6" fill="#3A2A20"/><ellipse cx="42" cy="40" rx="7" ry="6" fill="#3A2A20"/><ellipse cx="32" cy="38" rx="10" ry="7" fill="#D8CEBC"/><circle cx="27" cy="37" r="1.6" fill="#2E2118"/><circle cx="37" cy="37" r="1.6" fill="#2E2118"/></svg>
+        <h3>Leitão Pietrain</h3>
+        <p>Alto rendimento de carne magra. Indicado para engorda intensiva.</p>
+        <div class="price">R$ 540,00</div>
+        <button class="btn" onclick="alert('Leitão Pietrain adicionado ao pedido. Entraremos em contato por telefone.')">Comprar</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Fazenda Três Porquinhos — site criado para fins de estudo de segurança web.
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+  // Busca "ao vivo": o texto digitado é jogado direto na página, sem
+  // nenhum tratamento. Serve pra achar leitão por raça.
+  function buscarLeitao(ev) {
+    ev.preventDefault();
+    const termo = document.getElementById('busca').value;
+    const caixa = document.getElementById('resultado-busca');
+    caixa.innerHTML = 'Resultados para: ' + termo + ' — nenhum leitão exato encontrado, veja as opções abaixo.';
+    caixa.classList.add('show');
+  }
+</script>
+</body>
+</html>
